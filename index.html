@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompAInion</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>💡 CompAInion</h1>
+            <p>Your Smart AI Study Companion. Let's Learn Together!</p>
+        </header>
+
+        <section class="input-section">
+            <div class="input-container">
+                <h2>Masukkan Materi Pembelajaran</h2>
+                
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="switchTab('text')">Ketik Materi</button>
+                    <button class="tab-btn" onclick="switchTab('upload')">Upload File</button>
+                </div>
+
+                <div id="text-tab" class="tab-content active">
+                    <textarea id="material-input" placeholder="Ketik materi pelajaran yang ingin kamu pelajari di sini... " rows="8"></textarea>
+                </div>
+
+                <div id="upload-tab" class="tab-content">
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-icon">📁</div>
+                        <p>Drag & drop file teks di sini atau</p>
+                        <input type="file" id="file-input" accept=".txt,.pdf,.doc,.docx" hidden>
+                        <button class="upload-btn" onclick="document.getElementById('file-input').click()">Pilih File</button>
+                        <p class="upload-info">Format yang didukung: TXT, PDF, DOC, DOCX</p>
+                    </div>
+                </div>
+
+                <button class="generate-btn" onclick="generateSummary()" id="generate-btn">
+                    <span class="btn-text">Summarize</span>
+                    <div class="loading-spinner" style="display: none;"></div>
+                </button>
+            </div>
+        </section>
+
+        <section class="results-section" id="results-section" style="display: none;">
+            <div class="split-layout">
+                <div class="material-column">
+                    <div class="section-header">
+                        <h3>Materi Asli</h3>
+                        <button class="copy-btn" onclick="copyOriginalMaterial()">Copy</button>
+                    </div>
+                    <div class="content-box" id="original-material">
+                    </div>
+                </div>
+
+                <div class="summary-column">
+                    <div class="section-header">
+                        <h3>Rangkuman AI</h3>
+                        <button class="copy-btn" onclick="copySummary()">Copy</button>
+                    </div>
+                    <div class="content-box" id="ai-summary">
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-section">
+                <button class="quiz-btn" onclick="startQuiz()" id="start-quiz-btn">Start Quiz</button>
+            </div>
+        </section>
+
+        <section class="quiz-section-full" id="quiz-section" style="display: none;">
+            <div class="quiz-header">
+                <h2>Kuis Pembelajaran</h2>
+                <div class="quiz-info">
+                    <span class="question-counter" id="question-counter">Soal 1/5</span>
+                    <div class="timer" id="timer">
+                        <span class="timer-text">20s</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-content">
+                <div class="question-box" id="question-box">
+                    <h3 id="question-text">Pertanyaan akan muncul di sini...</h3>
+                </div>
+
+                <div class="options-container" id="options-container">
+                </div>
+
+                <div class="quiz-navigation">
+                    <button class="nav-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">
+                        Lanjut →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-results" id="final-results" style="display: none;">
+            <div class="results-container">
+                <div class="score-circle">
+                    <span class="score-percent" id="score-percent">0%</span>
+                </div>
+                <h2>Hasil Kuis Anda</h2>
+                <p class="score-description" id="score-description"></p>
+                
+                <div class="results-actions">
+                    <button class="action-btn secondary" onclick="backToSummary()">
+                        See Summary
+                    </button>
+                    <button class="action-btn primary" onclick="backToHome()">
+                       Main Dashboard
+                    </button>
+                </div>
+
+                <div class="quiz-copy-section">
+                    <h4>Salin Kuis</h4>
+                    <div class="copy-quiz-box" id="copy-quiz-content">
+                    </div>
+                    <button class="copy-quiz-btn" onclick="copyQuiz()">
+                        Salin Soal dan Jawaban
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
