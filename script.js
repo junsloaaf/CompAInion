@@ -9,7 +9,7 @@ let timeLeft = 20;
 let userAnswers = [];
 
 // API Configuration
-const GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY'; // Replace with your actual API key
+const GEMINI_API_KEY = 'AIzaSyAAGqEPAhD6uhRaNsa7U01qAAUaXSjIMR4'; 
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
 
 // Tab switching function
@@ -569,4 +569,5 @@ function backToHome() {
     document.getElementById('results-section').style.display = 'none';
     document.getElementById('quiz-section').style.display = 'none';
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
 }
